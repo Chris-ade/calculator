@@ -11,6 +11,9 @@ body {
 }
 .calculator-body-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
     height: 100vh;
 }
@@ -333,4 +336,11 @@ body {
 }
 .calculator-body.converter .calculator-buttons .input-operators .button-wrap .button.operator:first-of-type {
     margin-bottom: 22px;
+}
+.is-credits {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 26px;
+    margin-top: -24px;
 }

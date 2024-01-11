@@ -169,6 +169,7 @@ function Converter({toggleApps}) {
         />
         <Buttons handleClick={handleClick} toggleApps={toggleApps} />
       </div>
+      <div className="is-credits">Created By <strong>Chris Adebiyi</strong></div>
     </div>
   );
 }

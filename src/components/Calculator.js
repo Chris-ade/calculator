@@ -121,6 +121,7 @@ function Calculator({ toggleApps }) {
         <CalculatorScreen firstScreenValue={firstScreenValue} secondScreenValue={secondScreenValue} />
         <Buttons handleClick={handleClick} toggleApps={toggleApps} clearButtonText={clearButtonText} />
       </div>
+      <div className="is-credits">Created By <strong>Chris Adebiyi</strong></div>
     </div>
   );
 }
