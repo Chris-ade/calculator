@@ -21,13 +21,8 @@ This web application is a versatile tool that functions as both a calculator and
 3. Run the app: `npm start`
 4. Access the application in your web browser at `http://localhost:3000`
 
-## Screenshots
-
-![Screenshot 1](screenshots/screenshot1.png)
-*Caption for the first screenshot.*
-
-![Screenshot 2](screenshots/screenshot2.png)
-*Caption for the second screenshot.*
+# Deployment
+Here is the link to the deployed app: https://calculator-eosin-pi.vercel.app/
 
 ## Contributing
 
