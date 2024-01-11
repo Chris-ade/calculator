@@ -1,0 +1,336 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 16px;
+    font-weight: 400;
+    background: #efefef;
+    padding: 0;
+    margin: 0;
+}
+.calculator-body-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.calculator-body-container .right-credits {
+    text-align: center;
+    position: absolute;
+    top: 12px;
+    text-transform: uppercase;
+    color: #a3a2a9;
+    letter-spacing: 2px;
+    font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 14px;
+    right: 22px;
+}
+.calculator-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 350px;
+	background: #28262e;
+	border-radius: 18px;
+	margin: auto;
+	height: fit-content;
+}
+.calculator-screen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    background: #ffffff;
+}
+.calculator-screen .credits {
+	text-transform: uppercase;
+	color: #a3a2a9;
+	letter-spacing: 2px;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	width: 100%;
+	margin: 7px 0 0 28px;
+}
+.calculator-screen .input-screen {
+    font-size: 28px;
+    text-align: right;
+    padding: 0 24px 0 8px;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: none;
+    height: 30px;
+}
+.calculator-screen .input-screen#first_screen {
+	font-size: 22px;
+	color: #a3a2a9;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: right;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-left: 16px;
+}
+.calculator-screen .input-screen#second_screen {
+	font-size: 36px;
+	height: 50px;
+	padding: 0 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.calculator-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 16px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+.calculator-buttons .button-wrap {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+.calculator-buttons .button-wrap:first-of-type {
+    margin-top: 0;
+}
+.calculator-buttons .button-wrap:last-of-type {
+    margin-bottom: 8px;
+}
+.calculator-buttons .button-wrap .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 55px;
+    border-radius: 8px;
+    margin: 0 8px;
+    color: #fafafa;
+    font-weight: 600;
+    flex-grow: 1;
+    font-size: 22px;
+    user-select: none;
+}
+.calculator-buttons .button-wrap .button:hover {
+    border-radius: 50px;
+    background: #444;
+    outline: none;
+}
+.calculator-buttons .button-wrap .button.operator {
+    color: #ff7334;
+}
+.calculator-buttons .button-wrap .button.equals {
+    background: #ff7334;
+    color: #fafafa;
+}
+.calculator-buttons .button-wrap .button svg {
+    display: block;
+    stroke: #ff7334;
+    stroke-width: 2px;
+    fill: none;
+    width: 22px;
+    height: 22px;
+}
+.switch-button {
+    position: absolute;
+    bottom: 53px;
+    left: 33.7%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 55px;
+    border-radius: 8px;
+    margin: 0 8px;
+    color: #ff7334;
+    font-weight: 600;
+    flex-grow: 1;
+    font-size: 22px;
+    user-select: none;
+    cursor: pointer;
+}
+.switch-button:hover {
+    border-radius: 50px;
+    background: #444;
+    outline: none;
+}
+.switch-button svg {
+    display: block;
+    stroke: #ff7334;
+    stroke-width: 2px;
+    fill: none;
+    width: 22px;
+    height: 22px;
+}
+
+/* Converter Styles */
+.calculator-body.converter .calculator-buttons {
+    flex-direction: row;
+	justify-content: space-around;
+	margin: 16px;
+	cursor: pointer;
+}
+.calculator-body.converter .converter-screen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    background: #ffffff;
+}
+.calculator-body.converter .converter-screen .credits {
+	text-transform: uppercase;
+	color: #a3a2a9;
+	letter-spacing: 2px;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	width: 100%;
+	margin: 7px 0 8px 28px;
+}
+.calculator-body.converter .converter-screen .input-screen {
+    font-size: 28px;
+    text-align: right;
+    padding: 0 24px 0 8px;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: none;
+    height: 30px;
+}
+.calculator-body.converter .converter-screen .input-screen#first_screen {
+	font-size: 22px;
+	color: #a3a2a9;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: right;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-left: 16px;
+}
+.calculator-body.converter .converter-screen .input-screen#first_screen input {
+	font-size: 22px;
+	margin-left: 6px;
+    border: transparent;
+    outline: none;
+    width: 100%;
+    text-align: right;
+}
+.calculator-body.converter .converter-screen .input-screen#first_screen input:hover {
+	border: none;
+}
+.calculator-body.converter .converter-screen .input-screen select {
+    margin-right: auto;
+    background: transparent;
+    outline: none;
+    border: 2px solid #ff7334;
+    border-radius: 5px;
+    padding: 2px 0 2px 7px;
+}
+.calculator-body.converter .converter-screen .input-screen#second_screen {
+	font-size: 22px;
+	height: 50px;
+	padding: 0 14px;
+	display: flex;
+    align-items: center;
+}
+.calculator-body.converter .converter-screen .input-screen#second_screen input {
+	font-size: 22px;
+	display: flex;
+    align-items: center;
+    border: transparent;
+    outline: none;
+    width: 100%;
+    text-align: right;
+    margin-left: 6px;
+}
+.calculator-body.converter .calculator-buttons .button-wrap {
+    display: flex;
+    justify-content: space-between;
+    /*! width: 100%; */
+}
+.calculator-body.converter .calculator-buttons .button-wrap + .button-wrap {
+    margin-top: 20px;
+}
+.calculator-body.converter .calculator-buttons .button-wrap .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 60px;
+    width: 60px;
+    border-radius: 8px;
+    margin: 0 8px;
+    color: #fafafa;
+    font-weight: 600;
+    flex-grow: 1;
+    font-size: 20px;
+}
+.calculator-body.converter .calculator-buttons .button-wrap .button.operator {
+    color: #ff7334;
+}
+.calculator-body.converter .calculator-buttons .button-wrap .button#equals {
+    background: #ff7334;
+    color: #fafafa;
+}
+.calculator-body.converter .calculator-buttons .button-wrap .button svg {
+    display: block;
+    stroke: #ff7334;
+    stroke-width: 1.5px;
+    fill: none;
+    width: 22px;
+    height: 22px;
+}
+.calculator-body.converter .calculator-buttons .button-wrap .button svg {
+    width: 26px;
+    height: 26px;
+}
+.calculator-body.converter .calculator-buttons .button-wrap .button span {
+    color: #a3a2a9;
+    font-size: 14px;
+    margin-top: 12px;
+}
+.calculator-body.converter .calculator-buttons .input-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    align-items: center;
+}
+.calculator-body.converter .calculator-buttons .input-buttons .button-wrap .button:hover {
+    border-radius: 50px;
+    background: #444;
+}
+.calculator-body.converter .calculator-buttons .input-operators {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.calculator-body.converter .calculator-buttons .input-operators .button-wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+.calculator-body.converter .calculator-buttons .input-operators .button-wrap .button.operator {
+    background: #444 !important;
+    border-radius: 30px;
+}
+.calculator-body.converter .calculator-buttons .input-operators .button-wrap .button.operator:first-of-type {
+    margin-bottom: 22px;
+}
