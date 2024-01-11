@@ -32,10 +32,6 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 This project is licensed under the [MIT License](LICENSE.md).
 
-## Acknowledgments
-
-- Special thanks to the contributors and the React.js community for their support and inspiration.
-
 ## Contact
 
 For any inquiries or feedback, please contact me at [hi.chrisdev@gmail.com].
