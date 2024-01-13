@@ -5,8 +5,8 @@ import Buttons from './ConverterButtons';
 function Converter({toggleApps}) {
   const [firstScreenValue, setFirstScreenValue] = useState(0);
   const [secondScreenValue, setSecondScreenValue] = useState(0);
-  const [selectedUnit1, setSelectedUnit1] = useState(''); // Unit from the first select
-  const [selectedUnit2, setSelectedUnit2] = useState(''); // Unit from the second select
+  const [selectedUnit1, setSelectedUnit1] = useState('y'); // Unit from the first select
+  const [selectedUnit2, setSelectedUnit2] = useState('y'); // Unit from the second select
 
   function clearScreen() {
     // Clear first screen 
@@ -17,7 +17,6 @@ function Converter({toggleApps}) {
 
   const appendToScreen = (value) => {
     value = parseInt(value).toLocaleString();
-
     // Appends new value to previous values
     setFirstScreenValue((prev) => prev === 0 ? value : prev + value);
   };
@@ -32,14 +31,16 @@ function Converter({toggleApps}) {
   };
 
   const handleSelectChange1 = (e) => {
-    setSelectedUnit1(e.target.value);
-    calculateResult(selectedUnit1, selectedUnit2, firstScreenValue);
+    const newUnit1 = e.target.value;
+    setSelectedUnit1(newUnit1);
+    calculateResult(newUnit1, selectedUnit2, firstScreenValue);
   };
-
+  
   const handleSelectChange2 = (e) => {
-    setSelectedUnit2(e.target.value);
-    calculateResult(selectedUnit1, selectedUnit2, firstScreenValue);
-  };
+    const newUnit2 = e.target.value;
+    setSelectedUnit2(newUnit2);
+    calculateResult(selectedUnit1, newUnit2, firstScreenValue);
+  };  
 
   const conversionData = {
     y: { label: 'Year' },
@@ -61,7 +62,6 @@ function Converter({toggleApps}) {
     if (unit1 === unit2) {
       displayResult(value.toLocaleString());
     } else {
-      console.log(condition);
       switch (condition) {
         case ('y-wk'):
           result = value * 52.143;
