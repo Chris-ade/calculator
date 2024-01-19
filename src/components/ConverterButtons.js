@@ -23,7 +23,7 @@ function Buttons({ toggleApps, handleClick, clearButtonText }) {
         </div>
 
         <div className="button-wrap">
-            <SwitchButton className="button operator" onClick={toggleApps} />
+            <SwitchButton className="button operator" onClick={toggleApps} type="converter" />
             <Button value="0" onClick={handleClick} className="button" />
             <Button value="." onClick={handleClick} className="button" />
         </div>

@@ -55,10 +55,10 @@ function Calculator({ toggleApps }) {
       case 'C':
       case 'AC':
         clearScreen();
-        break;
+      break;
       case 'DEL':
         backspace();
-        break;
+      break;
       case '0':
       case '1':
       case '2':
@@ -70,23 +70,25 @@ function Calculator({ toggleApps }) {
       case '8':
       case '9':
         appendToScreen(value);
-        break;
+      break;
       case '.':
         appendToScreen(value);
-        break;
+      break;
+      case '×':
+        appendToScreen(' * ');
+      break;
       case '+':
       case '-':
-      case '*':
       case '/':
-        appendToScreen(' ' + value + ' ');
-        break;
+        appendToScreen(` ${value} `);
+      break;
       case '%':
         appendToScreen('%');
         calculate(); // Calculate percentage immediately
-        break;
+      break;
       case '=':
         calculate();
-        break;
+      break;
       default:
         console.warn(`Unknown button value: ${value}`);
     }

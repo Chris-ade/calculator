@@ -14,7 +14,7 @@ function Buttons({ toggleApps, handleClick, clearButtonText }) {
             <Button value="7" onClick={handleClick} className="button" />
             <Button value="8" onClick={handleClick} className="button" />
             <Button value="9" onClick={handleClick} className="button" />
-            <Button value="*" onClick={handleClick} className="button operator" />
+            <Button value="×" onClick={handleClick} className="button operator" />
         </div>
 
         <div className="button-wrap">

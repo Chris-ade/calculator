@@ -2,13 +2,27 @@ import React, { useState, useEffect } from 'react';
 import { ConverterScreen } from './Screen';
 import Buttons from './ConverterButtons';
 
-function Converter({toggleApps}) {
+const Converter = ({toggleApps, category}) => {
   const [firstScreenValue, setFirstScreenValue] = useState(0);
   const [secondScreenValue, setSecondScreenValue] = useState(0);
   const [selectedUnit1, setSelectedUnit1] = useState('y'); // Unit from the first select
   const [selectedUnit2, setSelectedUnit2] = useState('y'); // Unit from the second select
+  const [unitsData, setUnitsData] = useState(null);
 
-  function clearScreen() {
+  useEffect(() => {
+    import(`../conversions/${category}`).then(({ conversionData, calculateResult }) => {
+      setUnitsData(conversionData);
+      if (firstScreenValue !== 0) {
+        calculateResult(setSecondScreenValue, selectedUnit1, selectedUnit2, firstScreenValue);
+      }
+    });
+
+    if (firstScreenValue === 0) {
+        setSecondScreenValue(0);
+    }
+  }, [firstScreenValue, selectedUnit1, selectedUnit2, category]);
+
+  const clearScreen = () => {
     // Clear first screen 
     setFirstScreenValue(0);
     // Clear second screen
@@ -16,101 +30,48 @@ function Converter({toggleApps}) {
   };
 
   const appendToScreen = (value) => {
-    value = parseInt(value).toLocaleString();
-    // Appends new value to previous values
-    setFirstScreenValue((prev) => prev === 0 ? value : prev + value);
-  };
-
-  const displayResult = (value) => {
-    setSecondScreenValue(value);
-  }
+    // Ensure value is a string
+    value = value.toString();
+  
+    // Check if the value already contains a decimal point
+    if (value === '.' && firstScreenValue.includes('.')) {
+      return; // Do nothing if the value is a decimal point and there is already one on the screen
+    }
+  
+    // Append the new value to the previous values
+    setFirstScreenValue((prev) => (prev === 0 ? value : prev + value));
+  };  
 
   const handleInputChange = (e) => {
     setSecondScreenValue(e.target.value);
-    calculateResult(selectedUnit1, selectedUnit2, firstScreenValue);
   };
 
   const handleSelectChange1 = (e) => {
     const newUnit1 = e.target.value;
     setSelectedUnit1(newUnit1);
-    calculateResult(newUnit1, selectedUnit2, firstScreenValue);
   };
   
   const handleSelectChange2 = (e) => {
     const newUnit2 = e.target.value;
     setSelectedUnit2(newUnit2);
-    calculateResult(selectedUnit1, newUnit2, firstScreenValue);
-  };  
-
-  const conversionData = {
-    y: { label: 'Year' },
-    wk: { label: 'Week' },
-    d: { label: 'Day' },
-    h: { label: 'Hour' },
-    min: { label: 'Minute' },
-    s: { label: 'Second' },
-    ms: { label: 'Millisecond' },
-    us: { label: 'Microsecond' },
-    ps: { label: 'Picosecond' }
   };
 
-  const calculateResult = (unit1, unit2, value) => {
-    value = parseFloat(value);
-    let condition = `${unit1}-${unit2}`;
-    let result;
-
-    if (unit1 === unit2) {
-      displayResult(value.toLocaleString());
-    } else {
-      switch (condition) {
-        case ('y-wk'):
-          result = value * 52.143;
-        break;
-        case ('y-d'):
-          result = value * 365;
-        break;
-        case ('y-h'):
-          result = value * (24 * 365); 
-        break;
-        case ('y-min'):
-          result = value * (24 * 60 * 365);
-        break;
-        case ('y-s'):
-          result = value * (24 * 60 * 60 * 365);
-        break;
-        case ('y-ms'):
-          result = value * 3.1536e10;
-        break;
-        case ('y-us'):
-          result = value * 3.1536e13;
-        break;
-        case ('y-ps'):
-          result = value * 3.1536e22;
-        break;
-        case ('d-y'):
-          result = value / 365;
-        break;
-        case ('d-h'):
-          result = value * 24;
-        break;
-        case ('h-d'):
-          result = value / 24;
-        break;
-        default:
-          result = "Invalid conversion";
-        break;
-      }
-  
-      displayResult(result.toLocaleString());
-    }
-  };
-
-  function backspace() {
+  const backspace = () => {
     // Removes a character from the first screen
-    setFirstScreenValue((prev) => prev !== '' ? prev.slice(0, -1) : 0);
-  };
+    setFirstScreenValue((prev) => {
+      // Convert to string if it's not already
+      const stringValue = prev.toString();
+  
+      // If there is only one character, reset to zero
+      if (stringValue.length === 1) {
+        return 0;
+      }
+      // Remove the last character
+      return stringValue.slice(0, -1);
+    });
+  }  
 
-  function handleClick(event) {
+  const handleClick = (event) => {
     let value = event.target.textContent;
 
     if (event.currentTarget.id === 'DEL') {
@@ -144,21 +105,11 @@ function Converter({toggleApps}) {
     }
   };
 
-  useEffect(() => {
-    if (firstScreenValue !== 0) {
-        calculateResult(selectedUnit1, selectedUnit2, firstScreenValue);
-    }
-
-    if (firstScreenValue === 0) {
-        setSecondScreenValue(0);
-    }
-  }, [firstScreenValue]);
-
   return (
     <div className="calculator-body-container">
       <div className="calculator-body converter">
         <ConverterScreen
-          conversionData={conversionData}
+          conversionData={unitsData || {}}
           firstScreenValue={firstScreenValue}
           secondScreenValue={secondScreenValue}
           handleInputChange={handleInputChange}
