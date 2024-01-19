@@ -162,7 +162,7 @@ const calculateResult = (setSecondScreenValue, unit1, unit2, value) => {
           }
         } else {
             // Display in exponential form with a limited precision
-            const roundedExponential = Number.isInteger(result) ? result.toExponential(0) : result.toExponential(3);
+            const roundedExponential = Number.isInteger(result) ? result.toExponential(8) : result.toExponential(3);
             setSecondScreenValue(roundedExponential);
         }
       } else {
