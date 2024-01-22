@@ -28,15 +28,21 @@ const Converter = ({toggleApps, category}) => {
     }
   }, [firstScreenValue, selectedUnit1, selectedUnit2, category]);
 
+  const setSettings = (unit, title) => {
+      setSelectedUnit1(unit);
+      setSelectedUnit2(unit);
+      setConversionTitle1(title);
+      setConversionTitle2(title);
+  }
+
   const defaultSettings = (category) => {
       switch (category) {
         case 'Speed':
-          setSelectedUnit1('m/s');
-          setSelectedUnit2('m/s');
-          setConversionTitle1('Meter per second');
-          setConversionTitle2('Meter per second');
+          setSettings('m/s', 'Meter per second')
         break;
-      
+        case 'Time':
+          setSettings('y', 'Year');
+        break;
         default:
           break;
       }

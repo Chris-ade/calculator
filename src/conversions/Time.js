@@ -1,13 +1,13 @@
 const conversionData = {
-    y: { label: 'Year' },
-    wk: { label: 'Week' },
-    d: { label: 'Day' },
-    h: { label: 'Hour' },
-    min: { label: 'Minute' },
-    s: { label: 'Second' },
-    ms: { label: 'Millisecond' },
-    us: { label: 'Microsecond' },
-    ps: { label: 'Picosecond' }
+    y: { label: 'y', title: 'Year' },
+    wk: { label: 'wk', title: 'Week' },
+    d: { label: 'd', title: 'Day' },
+    h: { label: 'h', title: 'Hour' },
+    min: { label: 'min', title: 'Minute' },
+    s: { label: 's', title: 'Second' },
+    ms: { label: 'ms', title: 'Millisecond' },
+    us: { label: 'us', title: 'Microsecond' },
+    ps: { label: 'ps', title: 'Picosecond' }
 };
 
 const calculateResult = (setSecondScreenValue, unit1, unit2, value) => {
