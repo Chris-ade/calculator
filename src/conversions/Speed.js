@@ -18,7 +18,6 @@ const calculateResult = (setSecondScreenValue, unit1, unit2, value) => {
     if (unit1 === unit2) {
         setSecondScreenValue(value.toLocaleString());
     } else {
-        console.log(condition);
       switch (condition) {
         case ('m/s-km/s'):
           result = value * 0.001;
