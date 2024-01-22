@@ -36,13 +36,7 @@ function App() {
 
 // Helper function to render the appropriate converter component based on the category
 const renderConverterComponent = (category, toggleApps) => {
-  switch (category) {
-    case 'Time':
-      return <Converter toggleApps={toggleApps} category={category} />;
-    // Add cases for other categories and import their corresponding components
-    default:
-      return null;
-  }
+    return <Converter toggleApps={toggleApps} category={category} />;
 };
 
 export default App;

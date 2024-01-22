@@ -5,22 +5,40 @@ import Buttons from './ConverterButtons';
 const Converter = ({toggleApps, category}) => {
   const [firstScreenValue, setFirstScreenValue] = useState(0);
   const [secondScreenValue, setSecondScreenValue] = useState(0);
-  const [selectedUnit1, setSelectedUnit1] = useState('y'); // Unit from the first select
-  const [selectedUnit2, setSelectedUnit2] = useState('y'); // Unit from the second select
+  const [selectedUnit1, setSelectedUnit1] = useState(''); // Unit from the first select
+  const [selectedUnit2, setSelectedUnit2] = useState(''); // Unit from the second select
   const [unitsData, setUnitsData] = useState(null);
+  const [conversionTitle1, setConversionTitle1] = useState('');
+  const [conversionTitle2, setConversionTitle2] = useState('');
 
   useEffect(() => {
-    import(`../conversions/${category}`).then(({ conversionData, calculateResult }) => {
+    
+
+    import(`../conversions/${category}`).then(({ conversionData, calculateResult, defaultSettings }) => {
       setUnitsData(conversionData);
       if (firstScreenValue !== 0) {
         calculateResult(setSecondScreenValue, selectedUnit1, selectedUnit2, firstScreenValue);
       }
-    });
+  });
 
-    if (firstScreenValue === 0) {
+  if (firstScreenValue === 0) {
         setSecondScreenValue(0);
     }
   }, [firstScreenValue, selectedUnit1, selectedUnit2, category]);
+
+  const defaultSettings = (category) => {
+      switch (category) {
+        case 'Speed':
+          setSelectedUnit1('m/s');
+          setSelectedUnit2('m/s');
+          setConversionTitle1('Meter per second');
+          setConversionTitle2('Meter per second');
+        break;
+      
+        default:
+          break;
+      }
+  }
 
   const clearScreen = () => {
     // Clear first screen 
@@ -49,11 +67,15 @@ const Converter = ({toggleApps, category}) => {
   const handleSelectChange1 = (e) => {
     const newUnit1 = e.target.value;
     setSelectedUnit1(newUnit1);
+    // Set the title for the selected unit
+    setConversionTitle1(unitsData[newUnit1].title);
   };
   
   const handleSelectChange2 = (e) => {
     const newUnit2 = e.target.value;
     setSelectedUnit2(newUnit2);
+    // Set the title for the selected unit
+    setConversionTitle2(unitsData[newUnit2].title);
   };
 
   const backspace = () => {
@@ -117,6 +139,8 @@ const Converter = ({toggleApps, category}) => {
           handleSelectChange2={handleSelectChange2}
           selectedUnit1={selectedUnit1}
           selectedUnit2={selectedUnit2}
+          conversionTitle={conversionTitle1}
+          conversionTitle2={conversionTitle2}
         />
         <Buttons handleClick={handleClick} toggleApps={toggleApps} />
       </div>

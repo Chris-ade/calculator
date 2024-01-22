@@ -1,13 +1,10 @@
 const conversionData = {
-    y: { label: 'Year' },
-    wk: { label: 'Week' },
-    d: { label: 'Day' },
-    h: { label: 'Hour' },
-    min: { label: 'Minute' },
-    s: { label: 'Second' },
-    ms: { label: 'Millisecond' },
-    us: { label: 'Microsecond' },
-    ps: { label: 'Picosecond' }
+    kg: { label: 'Weight: Kilograms' },
+    lb: { label: 'Weight: Pounds' },
+    cm: { label: 'Height: Centimeters' },
+    m: { label: 'Height: Meters' },
+    ft: { label: 'Height: Feet' },
+    in: { label: 'Height: Inches' }
 };
 
 const calculateResult = (setSecondScreenValue, unit1, unit2, value) => {

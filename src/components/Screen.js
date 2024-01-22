@@ -8,7 +8,7 @@ function CalculatorScreen({ firstScreenValue, secondScreenValue }) {
   );
 }
 
-function ConverterScreen({ conversionData, handleInputChange, handleSelectChange1, handleSelectChange2, selectedUnit1, selectedUnit2, firstScreenValue, secondScreenValue }) {
+function ConverterScreen({ conversionData, conversionTitle, conversionTitle2, handleInputChange, handleSelectChange1, handleSelectChange2, selectedUnit1, selectedUnit2, firstScreenValue, secondScreenValue }) {
   return (
     <div className="converter-screen">
       <div className="credits">Converter</div>
@@ -21,6 +21,7 @@ function ConverterScreen({ conversionData, handleInputChange, handleSelectChange
       ))}
       </select>
       <input type="text" value={firstScreenValue} onChange={handleInputChange} readOnly />
+      <span>{conversionTitle}</span>
       </div>
 
       <div className="input-screen" id="second_screen">
@@ -32,6 +33,7 @@ function ConverterScreen({ conversionData, handleInputChange, handleSelectChange
       ))}
       </select>
       <input type="text" value={secondScreenValue} readOnly />
+      <span>{conversionTitle2}</span>
       </div>
     </div>
   );
