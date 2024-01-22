@@ -12,8 +12,10 @@ const Converter = ({toggleApps, category}) => {
   const [conversionTitle2, setConversionTitle2] = useState('');
 
   useEffect(() => {
-    
+      defaultSettings(category);
+  }, []);
 
+  useEffect(() => {
     import(`../conversions/${category}`).then(({ conversionData, calculateResult, defaultSettings }) => {
       setUnitsData(conversionData);
       if (firstScreenValue !== 0) {
