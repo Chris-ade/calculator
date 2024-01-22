@@ -28,7 +28,7 @@ const calculateResult = (setSecondScreenValue, unit1, unit2, value) => {
           result = value * 0.8;
         break;
         case ('f-c'):
-          result = value * (-17.22222222);
+          result = value / 33.8;
         break;
         case ('f-k'):
           result = value * 255.927778;
