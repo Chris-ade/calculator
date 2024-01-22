@@ -238,11 +238,4 @@ const calculateResult = (setSecondScreenValue, unit1, unit2, value) => {
     }
 };
 
-const defaultSettings = {
-    defaultUnit1: 'm/s',
-    defaultUnit2: 'm/s',
-    defaultTitle1: 'Meter per second',
-    defaultTitle2: 'Meter per second'
-}
-
-export { conversionData, calculateResult, defaultSettings };
+export { conversionData, calculateResult };

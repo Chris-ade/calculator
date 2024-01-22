@@ -43,6 +43,8 @@ const Converter = ({toggleApps, category}) => {
         case 'Time':
           setSettings('y', 'Year');
         break;
+        case 'Temperature':
+          setSettings('c', 'Celsius')
         default:
           break;
       }
