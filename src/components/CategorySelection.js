@@ -16,10 +16,6 @@ const CategorySelection = ({ onSelectCategory }) => {
         <i className="fi fi-rr-land-layers"></i> Area
         </div>
 
-        <div className="category-button" key={"BMI"} onClick={() => handleCategoryClick('BMI')}>
-        <i className="fi fi-rr-scale"></i> BMI
-        </div>
-
         <div className="category-button" key={"Data"} onClick={() => handleCategoryClick('Data')}>
         <i className="fi fi-rr-data-transfer"></i> Data
         </div>
@@ -50,10 +46,6 @@ const CategorySelection = ({ onSelectCategory }) => {
 
         <div className="category-button" key={"Volume"} onClick={() => handleCategoryClick('Volume')}>
         <i className="fi fi-rr-cube"></i> Volume
-        </div>
-
-        <div className="category-button" key={"Numerical System"} onClick={() => handleCategoryClick('Numerical System')}>
-        <i className="fi fi-rr-square-1"></i> Numerical System
         </div>
       </div>
       </div>

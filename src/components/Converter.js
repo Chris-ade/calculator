@@ -13,10 +13,10 @@ const Converter = ({toggleApps, category}) => {
 
   useEffect(() => {
       defaultSettings(category);
-  }, []);
+  }, [category]);
 
   useEffect(() => {
-    import(`../conversions/${category}`).then(({ conversionData, calculateResult, defaultSettings }) => {
+    import(`../conversions/${category}`).then(({ conversionData }) => {
       setUnitsData(conversionData);
       if (firstScreenValue !== 0) {
         calculateResult(setSecondScreenValue, selectedUnit1, selectedUnit2, firstScreenValue);
@@ -28,25 +28,36 @@ const Converter = ({toggleApps, category}) => {
     }
   }, [firstScreenValue, selectedUnit1, selectedUnit2, category]);
 
-  const setSettings = (unit, title) => {
-      setSelectedUnit1(unit);
-      setSelectedUnit2(unit);
-      setConversionTitle1(title);
-      setConversionTitle2(title);
+  const setSettings = (unit1, unit2, title1, title2) => {
+      setSelectedUnit1(unit1);
+      setSelectedUnit2(unit2);
+      setConversionTitle1(title1);
+      setConversionTitle2(title2);
   }
 
   const defaultSettings = (category) => {
       switch (category) {
         case 'Speed':
-          setSettings('m/s', 'Meter per second')
+          setSettings('m/s', 'km/h', 'Meter per second', 'Kilometer per hour');
         break;
         case 'Time':
-          setSettings('y', 'Year');
+          setSettings('y', 'wk', 'Year', 'Week');
         break;
         case 'Temperature':
-          setSettings('c', 'Celsius')
+          setSettings('c', 'f', 'Celsius', 'Fahrenheit');
+        break;
+        case 'Mass':
+          setSettings('t', 'kg', 'Tonne', 'Kilogram');
+        break;
+        case 'Data':
+          setSettings('b', 'kb', 'Byte', 'Kilobyte');
+        break;
+        case 'Length':
+          setSettings('km', 'm', 'Kilometer', 'Meter');
+        break;
         default:
-          break;
+          // Do nothing
+        break;
       }
   }
 
@@ -137,6 +148,41 @@ const Converter = ({toggleApps, category}) => {
     }
   };
 
+  const calculateResult = (setSecondScreenValue, unit1, unit2, value) => {
+    value = parseFloat(value);
+    let result;
+
+    if (unit1 === unit2) {
+        setSecondScreenValue(value.toLocaleString());
+    } else {
+      if (category === "Temperature") {
+        const toCelsius1 = unitsData[unit1].toCelsius;
+        const fromCelsius2 = unitsData[unit2].fromCelsius;
+
+        result = fromCelsius2(toCelsius1(value));
+      } else {
+        const conversionFactor = unitsData[unit1].factor / unitsData[unit2].factor;
+        result = value * conversionFactor;
+      }
+  
+      if (!isNaN(result)) {
+        if (Math.abs(result) < 1e12) {
+          if (result > 0 && result < 1) {
+            setSecondScreenValue(result.toFixed(10));
+          } else {
+            setSecondScreenValue(result.toLocaleString());
+          }
+        } else {
+            // Display in exponential form with a limited precision
+            const roundedExponential = Number.isInteger(result) ? result.toExponential(8) : result.toExponential(3);
+            setSecondScreenValue(roundedExponential);
+        }
+      } else {
+        setSecondScreenValue("Invalid conversion");
+      }
+    }
+};
+  
   return (
     <div className="calculator-body-container">
       <div className="calculator-body converter">

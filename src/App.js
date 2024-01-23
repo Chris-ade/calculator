@@ -3,6 +3,7 @@ import './css/App.css';
 import Calculator from './components/Calculator';
 import Converter from './components/Converter';
 import CategorySelection from './components/CategorySelection';
+import DiscountConverter from './components/DiscountConverter';
 
 function App() {
   const [isCalculatorActive, setCalculatorActive] = useState(true);
@@ -36,7 +37,11 @@ function App() {
 
 // Helper function to render the appropriate converter component based on the category
 const renderConverterComponent = (category, toggleApps) => {
-    return <Converter toggleApps={toggleApps} category={category} />;
+    if (category === "Discount") {
+      return <DiscountConverter toggleApps={toggleApps} />;
+    } else {
+      return <Converter toggleApps={toggleApps} category={category} />;
+    };
 };
 
 export default App;

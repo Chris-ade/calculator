@@ -122,6 +122,7 @@ body {
     flex-grow: 1;
     font-size: 22px;
     user-select: none;
+    transition: all 0.5s;
 }
 .calculator-buttons .button-wrap .button:hover {
     border-radius: 50px;
@@ -290,6 +291,19 @@ body {
     outline: none;
     height: 30px;
 }
+.calculator-body.converter .converter-screen .input-screen.discount {
+    height: auto !important;
+    margin: 4px 0;
+}
+.calculator-body.converter .converter-screen .discount-savings {
+    margin-bottom: 8px;
+}
+.calculator-body.converter .converter-screen .input-screen .discount-title {
+    display: inline-flex;
+    font-size: 17px;
+    color: initial;
+    width: 201px;
+}
 .calculator-body.converter .converter-screen .input-screen#first_screen {
 	font-size: 22px;
 	color: #a3a2a9;
@@ -330,14 +344,14 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.calculator-body.converter .converter-screen .input-screen#second_screen {
+.calculator-body.converter .converter-screen .input-screen#second_screen, .calculator-body.converter .converter-screen .input-screen#third_screen {
 	font-size: 22px;
 	height: 75px;
 	padding: 0 14px;
 	display: flex;
     align-items: center;
 }
-.calculator-body.converter .converter-screen .input-screen#second_screen input {
+.calculator-body.converter .converter-screen .input-screen#second_screen input, .calculator-body.converter .converter-screen .input-screen#third_screen input {
 	font-size: 22px;
 	display: flex;
     align-items: center;

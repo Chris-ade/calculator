@@ -39,4 +39,28 @@ function ConverterScreen({ conversionData, conversionTitle, conversionTitle2, ha
   );
 }
 
-export { CalculatorScreen, ConverterScreen };
+function DiscountConverterScreen({ handleInputChange, handleInputChange2, firstScreenValue, secondScreenValue, thirdScreenValue, savings }) {
+  return (
+    <div className="converter-screen">
+      <div className="credits">Discount</div>
+      <div className="input-screen discount" id="first_screen">
+      <div className="discount-title">Original price</div>
+      <input type="text" value={firstScreenValue} onChange={handleInputChange} maxLength="15" readOnly />
+      </div>
+
+      <div className="input-screen discount" id="second_screen">
+      <div className="discount-title">Discount (% off)</div>
+      <input type="text" value={secondScreenValue} onChange={handleInputChange2} placeholder="Enter discount..." maxLength="2" />
+      </div>
+
+      <div className="input-screen discount" id="third_screen">
+      <div className="discount-title">Final price</div>
+      <input type="text" value={thirdScreenValue} maxLength="15" readOnly />
+      </div>
+
+      <div className="discount-savings">You save {savings}</div>
+    </div>
+  );
+}
+
+export { CalculatorScreen, ConverterScreen, DiscountConverterScreen };
