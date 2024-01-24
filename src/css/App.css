@@ -302,7 +302,8 @@ body {
     display: inline-flex;
     font-size: 17px;
     color: initial;
-    width: 201px;
+    width: fit-content;
+    white-space: nowrap;
 }
 .calculator-body.converter .converter-screen .input-screen#first_screen {
 	font-size: 22px;

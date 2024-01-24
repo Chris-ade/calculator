@@ -50,7 +50,7 @@ function DiscountConverterScreen({ handleInputChange, handleInputChange2, firstS
 
       <div className="input-screen discount" id="second_screen">
       <div className="discount-title">Discount (% off)</div>
-      <input type="text" value={secondScreenValue} onChange={handleInputChange2} placeholder="Enter discount..." maxLength="2" />
+      <input type="number" value={secondScreenValue} onChange={handleInputChange2} placeholder="Enter discount..." maxLength="2" />
       </div>
 
       <div className="input-screen discount" id="third_screen">
