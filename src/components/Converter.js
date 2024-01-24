@@ -55,6 +55,12 @@ const Converter = ({toggleApps, category}) => {
         case 'Length':
           setSettings('km', 'm', 'Kilometer', 'Meter');
         break;
+        case 'Area':
+          setSettings('sqkm', 'ha', 'Square kilometer', 'Hectare');
+        break;
+        case 'Volume':
+          setSettings('cm', 'Cubic meter', 'cdm', 'Cubic decimeter');
+        break;
         default:
           // Do nothing
         break;
